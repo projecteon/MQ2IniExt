@@ -157,7 +157,7 @@ public:
 			return false;
 		}
 		PIniRefResult result = (PIniRefResult)VarPtr.Ptr;
-		if (PMQ2TYPEMEMBER pMember = MQ2IniResultType::FindMember(Member)) {
+		if (MQTypeMember* pMember = MQ2IniResultType::FindMember(Member)) {
 			switch ((IniResultMembers)pMember->ID) {
 			case Count:
 				if (ISINDEX()) break;

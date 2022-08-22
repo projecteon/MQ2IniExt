@@ -59,7 +59,7 @@ PIniRef LoadIni(const char* filename) {
 	return 0;
 }
 
-BOOL dataIniExt(PCHAR szIndex, MQ2TYPEVAR& Ret) {
+BOOL dataIniExt(PCHAR szIndex, MQTypeVar& Ret) {
 	if (szIndex) {
 		PCHAR pIniFile = 0;
 		PCHAR pKey = 0;
@@ -72,7 +72,7 @@ BOOL dataIniExt(PCHAR szIndex, MQ2TYPEVAR& Ret) {
 				if (DataIniKey = strtok_s(NULL, ",", &Next_Token1)) {
 					if (!strcmp(DataIniKey, "-1"))
 						DataIniKey = 0;
-					pDefault = strtok_s(NULL, "¦", &Next_Token1);
+					pDefault = strtok_s(NULL, "ï¿½", &Next_Token1);
 					if (!pDefault) {
 						pDefault = "";
 					}
