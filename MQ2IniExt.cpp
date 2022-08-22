@@ -59,20 +59,20 @@ PIniRef LoadIni(const char* filename) {
 	return 0;
 }
 
-BOOL dataIniExt(PCHAR szIndex, MQTypeVar& Ret) {
+bool dataIniExt(const char* szIndex, MQTypeVar& Ret) {
 	if (szIndex) {
 		PCHAR pIniFile = 0;
 		PCHAR pKey = 0;
 		PCHAR pDefault = "";
 		char* Next_Token1 = 0;
-		if (pIniFile = strtok_s(szIndex, ",", &Next_Token1)) {
+		if (pIniFile = strtok_s((char*)szIndex, ",", &Next_Token1)) {
 			if (DataIniSection = strtok_s(NULL, ",", &Next_Token1)) {
 				if (!strcmp(DataIniSection, "-1"))
 					DataIniSection = 0;
 				if (DataIniKey = strtok_s(NULL, ",", &Next_Token1)) {
 					if (!strcmp(DataIniKey, "-1"))
 						DataIniKey = 0;
-					pDefault = strtok_s(NULL, "�", &Next_Token1);
+					pDefault = strtok_s(NULL, "¦", &Next_Token1);
 					if (!pDefault) {
 						pDefault = "";
 					}
@@ -294,7 +294,7 @@ void GetIniFilename(PCHAR source, PCHAR dest) {
 	}
 
 	if (source[0] != '\\' && !strchr(source, ':'))
-		sprintf_s(dest, MAX_STRING, "%s\\%s", gszMacroPath, source);
+		sprintf_s(dest, MAX_STRING, "%s\\%s", gPathMacros, source);
 	else
 		strcpy_s(dest, MAX_STRING, source);
 
