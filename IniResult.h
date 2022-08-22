@@ -138,6 +138,7 @@ public:
 		if (!VarPtr.Ptr) {
 			return false;
 		}
+
 		PIniRefResult result = (PIniRefResult)VarPtr.Ptr;
 		if (result->type == NoValue) {
 			if (result->isDefault) delete result;
@@ -151,7 +152,10 @@ public:
 			if (result->isDefault) delete result;
 			return true;
 		}
+
+		return false;
 	}
+
 	bool GetMember(MQVarPtr VarPtr, const char* Member, PCHAR szIndex, MQTypeVar &Dest) {
 		if (!VarPtr.Ptr) {
 			return false;
@@ -184,7 +188,7 @@ public:
 				return true;
 			case Index:
 				if (ISINDEX() && ISNUMBER()) {
-					int index = GETNUMBER();
+					size_t index = GETNUMBER();
 					int counter = 0;
 					if (result->type == NoValue) {
 						return false;
